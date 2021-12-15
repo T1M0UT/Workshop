@@ -3,6 +3,15 @@
 
 
 def read_file(file_path: str) -> dict:
+    """function that reads csv file and returns dict \
+woth date as key and list with sublists as values
+
+    Args:
+        file_path (str): file destination
+
+    Returns:
+        dict: dict
+    """
     with open(file_path, 'r', encoding='utf_8') as file:
         dates = file.readlines()
         dates.pop(0)
@@ -23,6 +32,13 @@ def read_file(file_path: str) -> dict:
 
 
 def write_file(file_path, new_dict):
+    """function that writes in file new dict
+
+    Args:
+        file_path ([type]): file destination
+        new_dict ([type]): new dict with same type of keys and \
+values as in read_file
+    """
     with open(file_path, 'w', encoding='utf_8') as file:
         first_line = 'DATES,TASK,NUMBER_NEEDED,REAL_NUMBER,PRIORITY,SUCCESS,FAILURE\n'
         file.write(first_line)
@@ -38,7 +54,4 @@ def write_file(file_path, new_dict):
 
 
 if __name__ == '__main__':
-    d = read_file('tasks')
-    print(d)
-    d['17.12.2021'] = [['eat', '2', '1', '1', '', '*']]
-    write_file('new_tasks', d)
+    import doctest
